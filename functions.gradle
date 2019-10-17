@@ -1,0 +1,6 @@
+ext {
+    isBuild = {
+        def runningTask = gradle.startParameter.taskNames
+        return ('build' in runningTask)
+    }
+}

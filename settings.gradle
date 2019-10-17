@@ -1,0 +1,2 @@
+include ':app', ':dust-for-kotlin-mvp'
+rootProject.name='dust-for-kotlin'

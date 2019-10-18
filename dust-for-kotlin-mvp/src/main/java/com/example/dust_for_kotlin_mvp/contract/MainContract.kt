@@ -1,6 +1,7 @@
 package com.example.dust_for_kotlin_mvp.contract
 
 import android.content.Context
+import android.net.ConnectivityManager
 import com.example.dust_for_kotlin_mvp.api.model.DustModel
 
 interface MainContract {
@@ -30,5 +31,15 @@ interface MainContract {
         fun onDetachView()
 
         fun makeApiCall(sidoName: String, numOfRow: Int, pageNo: Int)
+
+        fun checkInternet()
+
+        fun isConnected()
+
+        fun requestPermission()
+
+        fun searchLocation()
+
+        fun setAddress()
     }
 }

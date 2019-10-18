@@ -9,15 +9,23 @@ interface MainContract {
 
         fun showToastMessage(message: String)
 
-        fun uiSettings(dustData: DustModel)
+        fun uiTextSettings(dustData: DustModel, pm10Level: String, pm25Level: String)
+
+        fun uiImageSettings(resId: Int)
+
+        fun uiColorSettings(color: Int)
 
         fun setSpinnerAdapter(sggNameList: ArrayList<String>, items: ArrayList<DustModel>)
 
         fun getAppContext(): Context
+
+        fun showProgress()
+
+        fun hideProgress()
     }
 
     interface Presenter {
-        fun onAttachView(view: MainContract.View)
+        fun onAttachView(view: View)
 
         fun onDetachView()
 

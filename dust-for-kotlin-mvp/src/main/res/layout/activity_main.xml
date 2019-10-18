@@ -11,7 +11,7 @@
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -24,8 +24,7 @@
         <Spinner
             android:id="@+id/spinner_sgg"
             android:layout_width="140dp"
-            android:layout_height="25dp"
-            android:entries="@array/temp_sgg"/>
+            android:layout_height="25dp" />
 
     </LinearLayout>
 
@@ -43,52 +42,60 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/ic_sentiment_neutral_black_24dp"
-            android:backgroundTint="#000000"/>
+            android:background="@drawable/ic_sentiment_neutral_black_24dp" />
 
         <TextView
             android:id="@+id/air_state"
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="10dp"
             android:textSize="30sp"
-            android:text="정보 없음"
+            android:text="@string/air_state_value"
             android:fontFamily="@font/seoul_namsan"/>
 
         <TextView
-            android:id="@+id/specfic_info"
+            android:id="@+id/air_state_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:textSize="15sp"
+            android:text="@string/air_state_title"
+            android:fontFamily="@font/seoul_namsan"/>
+
+        <TextView
+            android:id="@+id/specific_info"
             android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="미세먼지 : 정보 없음"
+            android:text="@string/specific_info_val"
             android:fontFamily="@font/seoul_namsan"/>
 
         <TextView
-            android:id="@+id/specfic_info_2"
+            android:id="@+id/specific_info_2"
             android:layout_marginTop="7.5dp"
             android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="초미세먼지 : 정보 없음"
+            android:text="@string/specific_info2_val"
             android:fontFamily="@font/seoul_namsan"/>
 
         <TextView
-            android:id="@+id/specfic_info_3"
+            android:id="@+id/specific_info_3"
             android:layout_marginTop="7.5dp"
             android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="일산화탄소 : 정보 없음"
+            android:text="@string/specific_info3_val"
             android:fontFamily="@font/seoul_namsan"/>
 
         <TextView
-            android:id="@+id/specfic_info_4"
+            android:id="@+id/specific_info_4"
             android:layout_marginTop="7.5dp"
             android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="오존지수 : 정보 없음"
+            android:text="@string/specific_info4_val"
             android:fontFamily="@font/seoul_namsan"/>
     </LinearLayout>
 
@@ -98,24 +105,70 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:gravity="center">
 
-        <TextView
-            android:id="@+id/text3"
+        <LinearLayout
+            android:id="@+id/go_specificActivity"
             android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:fontFamily="@font/seoul_namsan"
-            android:gravity="center"
-            android:text="자세한 정보 보기"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
 
-        <ImageButton
-            android:layout_marginLeft="20dp"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:background="@drawable/ic_search_black_24dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:fontFamily="@font/seoul_namsan"
+                android:gravity="center"
+                android:text="@string/more_info_text"
+                android:textSize="16sp" />
+
+            <ImageButton
+                android:layout_marginLeft="5dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_search_black_24dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/search_location"
+            android:layout_marginLeft="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:fontFamily="@font/seoul_namsan"
+                android:gravity="center"
+                android:text="@string/find_location_text"
+                android:textSize="16sp" />
+
+            <ImageButton
+                android:layout_marginLeft="5dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_my_location_black_24dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C7C7C7"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
 
     </LinearLayout>
 

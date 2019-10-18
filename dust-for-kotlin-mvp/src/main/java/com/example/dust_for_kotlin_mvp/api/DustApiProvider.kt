@@ -24,7 +24,6 @@ object DustApiProvider {
     }
 
     internal class AuthInterceptor : Interceptor {
-
         @Throws(IOException::class)
         override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
             val response = chain.proceed(chain.request())

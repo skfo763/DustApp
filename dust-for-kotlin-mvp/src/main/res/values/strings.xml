@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">dust-for-kotlin-mvp</string>
+    <string name="app_name">원클릭 미세먼지</string>
     <string name="air_state_value">정보 없음 / 정보 없음</string>
     <string name="air_state_title">(미세먼지 등급 / 초미세먼지 등급)</string>
     <string name="specific_info_val">미세먼지 농도 : 정보 없음</string>
@@ -8,4 +8,7 @@
     <string name="specific_info4_val">오존지수 : 정보 없음</string>
     <string name="more_info_text">자세한 정보</string>
     <string name="find_location_text">현위치로 검색</string>
+    <string name="temp_sidoText">서울특별시</string>
+    <string name="temo_sggTet">종로구</string>
+    <string name="goSpinnerText">측정소 정보로 검색</string>
 </resources>

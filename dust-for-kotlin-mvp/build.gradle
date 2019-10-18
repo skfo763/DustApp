@@ -15,7 +15,7 @@ android {
 
         buildConfigField "String", "OPENAPI_CLIENT_ID", project.properties["OPENAPI_CLIENT_ID"] ?: "\"NOT_FOUND\""
         buildConfigField "String", "NAVERMAP_CERT_ID", project.properties["NAVERMAP_CERT_ID"] ?: "\"NOT_FOUND\""
-        buildConfigField "String", "GEO_CERT_ID", project.properties["GEO_CERT_ID"] ?: "\"NOT_FOUND\""
+        buildConfigField "String", "NAVERMAP_CERT_SECRET", project.properties["NAVERMAP_CERT_SECRET"] ?: "\"NOT_FOUND\""
     }
 
     buildTypes {

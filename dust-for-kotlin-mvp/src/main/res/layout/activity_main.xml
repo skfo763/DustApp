@@ -7,26 +7,96 @@
     android:background="#858585"
     android:id="@+id/notification_background">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:gravity="center"
+        android:layout_alignParentTop="true"
         android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="140dp"
-            android:layout_height="25dp"
-            android:entries="@array/sidos" />
+        <LinearLayout
+            android:id="@+id/spinnerLayout"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/spinner_sgg"
-            android:layout_width="140dp"
-            android:layout_height="25dp" />
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="140dp"
+                android:layout_height="25dp"
+                android:entries="@array/sidos" />
 
-    </LinearLayout>
+            <Spinner
+                android:id="@+id/spinner_sgg"
+                android:layout_width="140dp"
+                android:layout_height="25dp"
+                android:entries="@array/temp_sgg"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/locationLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/sidoText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/temp_sidoText"
+                    android:textSize="18sp"
+                    android:textColor="#000000"/>
+
+                <TextView
+                    android:id="@+id/sggText"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/temo_sggTet"
+                    android:textSize="18sp"
+                    android:textColor="#000000"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/goToSpinnerLayout"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:fontFamily="@font/seoul_namsan"
+                    android:gravity="center"
+                    android:text="@string/goSpinnerText"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/ic_store_black_24dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_below="@id/top"

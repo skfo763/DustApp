@@ -1,6 +1,10 @@
 package com.example.dust_for_kotlin_mvp.Presenter
 
+import android.annotation.TargetApi
 import android.content.res.Resources
+import android.net.NetworkCapabilities
+import android.os.Build
+import android.os.Parcelable
 import android.widget.ArrayAdapter
 import com.example.dust_for_kotlin_mvp.BuildConfig
 import com.example.dust_for_kotlin_mvp.R
@@ -13,18 +17,37 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.lang.Exception
+import java.lang.IllegalStateException
 import java.net.URLEncoder
 
 class MainPresenter: MainContract.Presenter {
     lateinit var sidoNameArr: ArrayList<String>
-    private lateinit var context: MainContract.View
+    internal lateinit var context: MainContract.View
+    internal lateinit var locationManager: LocationManager
     private lateinit var api: DustApi
     private lateinit var dustCall: Call<DustApiResponse>
-    var adapter: ArrayAdapter<String>? = null
+    lateinit var adapter: ArrayAdapter<String>
+
+    override fun checkInternet(view: MainContract.View) {
+        if(!isConnected()) {
+            context.setNetworkAlert()
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    override fun isConnected(): Boolean {
+        context.getSystemServ().apply {
+            val network = this.activeNetwork
+            val info = this.getNetworkCapabilities(network)
+            return info?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) ?: false
+        }
+    }
 
     override fun onAttachView(view: MainContract.View) {
         this.context = view
+        checkInternet(view)
         api = DustApiProvider.provideDustApi()
+        locationManager = LocationManager().apply { onLinked(this@MainPresenter, view, context.getLocationServ()) }
         sidoNameArr = getSidoNameArr(context.getAppContext().resources)
     }
 
@@ -63,14 +86,14 @@ class MainPresenter: MainContract.Presenter {
     }
 
     internal fun passUiInformationForView(result: DustModel) {
-        val pm10Level = getLevelPm10(result.pm10Value24)
-        val pm25Level = getLevelPm25(result.pm25Value24)
+        val pm10Level = getLevelPm10(result.pm10Value)
+        val pm25Level = getLevelPm25(result.pm25Value)
         context.uiTextSettings(result, pm10Level, pm25Level)
         context.uiColorSettings(getColor(pm10Level))
         context.uiImageSettings(getImage(pm10Level))
     }
 
-    private fun getImage(pm10Level: String): Int {
+    internal fun getImage(pm10Level: String): Int {
         return when(pm10Level) {
             "좋음" -> R.drawable.ic_sentiment_satisfied_black_24dp
             "보통" -> R.drawable.ic_sentiment_neutral_black_24dp
@@ -80,7 +103,7 @@ class MainPresenter: MainContract.Presenter {
         }
     }
 
-    private fun getColor(pm10Level: String): Int {
+    internal fun getColor(pm10Level: String): Int {
         return when(pm10Level) {
             "좋음" -> R.color.colorGood
             "보통" -> R.color.colorNeutral
@@ -90,7 +113,7 @@ class MainPresenter: MainContract.Presenter {
         }
     }
 
-    private fun getLevelPm10(input: String): String {
+    internal fun getLevelPm10(input: String): String {
         val a: Int
         return try {
             a = Integer.parseInt(input)
@@ -106,7 +129,7 @@ class MainPresenter: MainContract.Presenter {
         }
     }
 
-    private fun getLevelPm25(input: String): String {
+    internal fun getLevelPm25(input: String): String {
         val a: Int
         return try {
             a = Integer.parseInt(input)

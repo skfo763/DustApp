@@ -1,9 +1,11 @@
 package com.example.dust_for_kotlin_mvp.api.model
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
-class DustModel(
+class DustModel (
 
     @field:SerializedName("stationName") val stationName: String,
     @field:SerializedName("mangName") val mangName: String,
@@ -31,4 +33,63 @@ class DustModel(
 
     @field:SerializedName("khaiValue") val khaiValue: String,
     @field:SerializedName("khaiGrade") val khaiGrade: String
-)
+): Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString()
+    )
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(stationName)
+        parcel.writeString(mangName)
+        parcel.writeString(dataTme)
+        parcel.writeString(so2Value)
+        parcel.writeString(so2Grade)
+        parcel.writeString(coValue)
+        parcel.writeString(coGrade)
+        parcel.writeString(o3Value)
+        parcel.writeString(o3Grade)
+        parcel.writeString(no2Value)
+        parcel.writeString(no2Grade)
+        parcel.writeString(pm10Value)
+        parcel.writeString(pm10Value24)
+        parcel.writeString(pm10Grade)
+        parcel.writeString(pm25Value)
+        parcel.writeString(pm25Value24)
+        parcel.writeString(pm25Grade)
+        parcel.writeString(khaiValue)
+        parcel.writeString(khaiGrade)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<DustModel> {
+        override fun createFromParcel(parcel: Parcel): DustModel {
+            return DustModel(parcel)
+        }
+
+        override fun newArray(size: Int): Array<DustModel?> {
+            return arrayOfNulls(size)
+        }
+    }
+
+}

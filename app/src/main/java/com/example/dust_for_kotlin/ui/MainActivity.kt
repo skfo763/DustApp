@@ -118,8 +118,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getSggArr(items: ArrayList<DustModel>): ArrayList<String> {
-        val sggNameList: ArrayList<String> = arrayListOf()
+    private fun getSggArr(items: ArrayList<DustModel>): List<String> {
+        val sggNameList: MutableList<String> = arrayListOf()
         for(index in items) {
             sggNameList.add(index.stationName)
         }
